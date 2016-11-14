@@ -1,0 +1,56 @@
+//Universidad Tecnica del Norte
+//Henry Lema
+//Contador 00-99 con Pulsador
+//Creacion de la variables y contadores
+int A=13; 
+int B=12;
+int C=11;
+int D=10;
+int display1=9;
+int display2=8;
+int contador=0;
+int pulsador=7;
+int contu=0;
+int contd=0;
+// Metodo desigan los pines de salida para el display
+void setup(){
+  //Salidas para los puertos indicados 
+  pinMode(A,OUTPUT);
+  pinMode(B,OUTPUT);
+  pinMode(C,OUTPUT);
+  pinMode(D,OUTPUT);
+  // Display para la unidad y decena
+  pinMode(display1,OUTPUT);
+  pinMode(display2,OUTPUT);}
+
+void dis(int numero){
+switch(numero){
+  // Encendido del display que va desde 00-99
+case 1:digitalWrite(A,HIGH);digitalWrite(B,LOW);digitalWrite(C,LOW);digitalWrite(D,LOW);delay(30);break; 
+case 2: digitalWrite(A,LOW);digitalWrite(B,HIGH);digitalWrite(C,LOW);digitalWrite(D,LOW);delay(30);break;
+case 3: digitalWrite(A,HIGH);digitalWrite(B,HIGH);digitalWrite(C,LOW);digitalWrite(D,LOW);delay(30); break;
+case 4: digitalWrite(A,LOW);digitalWrite(B,LOW);digitalWrite(C,HIGH);digitalWrite(D,LOW);delay(30);break;
+case 5: digitalWrite(A,HIGH);digitalWrite(B,LOW);digitalWrite(C,HIGH);digitalWrite(D,LOW);delay(30);break;
+case 6: digitalWrite(A,LOW);digitalWrite(B,HIGH);digitalWrite(C,HIGH);digitalWrite(D,LOW);delay(30); break;
+case 7: digitalWrite(A,HIGH);digitalWrite(B,HIGH);digitalWrite(C,HIGH);digitalWrite(D,LOW);delay(30); break;
+case 8: digitalWrite(A,LOW);digitalWrite(B,LOW);digitalWrite(C,LOW);digitalWrite(D,HIGH);delay(30); break;
+case 9: digitalWrite(A,HIGH);digitalWrite(B,LOW);digitalWrite(C,LOW);digitalWrite(D,HIGH);delay(30); break;
+default : digitalWrite(A,LOW);digitalWrite(B,LOW);digitalWrite(C,LOW);digitalWrite(D,LOW);delay(30);break;}}
+
+void loop(){
+if(contador<99){contador++;contd=contador/10; // Metodo realiza el incremeto de 1 en 1
+digitalWrite(display1,LOW); //Enciende Unidades
+digitalWrite(display2,HIGH); //Apaga las decenas cuando hace el conteo
+dis(contd);delay(50);
+                 contu=contador-(contd*10);
+                 digitalWrite(display1,HIGH); // Enciende en la posicion que se encuentre el contador de unidades
+                 digitalWrite(display2,LOW);
+                 dis(contu);                 // Enciende en la posicion que se encuentre el contador 
+                 delay(60); // Retardo
+                 delay(20);
+                 }
+else{contador=0;}
+}
+
+
+
